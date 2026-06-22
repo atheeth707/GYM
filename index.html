@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="PowerFit AI Gym Assistant — Transform your body with AI-powered fitness. Premium gym with AI coaching, modern equipment, and personalized plans." />
+    <title>PowerFit AI — AI Powered Gym Assistant</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/style.css" />
+    <script data-arena-recording="true">(function(){
+"use strict";
+var SK="__arena_rec",RRWEB_CDN="https://cdn.jsdelivr.net/npm/rrweb@2.0.0-alpha.4/dist/rrweb.min.js";
+var MAX_RECORDING_MS=600000,MAX_RRWEB_EVENTS=30000,MAX_INTERACTIONS=5000,MAX_CURSOR_POINTS=10000,recStopped=false;
+var stored=null;try{var raw=sessionStorage.getItem(SK);if(raw)stored=JSON.parse(raw);}catch(ex){}
+var meta=stored?stored.m||null:null,rrwebEvents=stored?stored.r||[]:[],rrwebStarted=false,startTime=stored?stored.st||Date.now():Date.now();
+var interactions=stored?stored.i||[]:[],cursorPath=stored?stored.c||[]:[],lastCursorSample=0,lastScrollSample=0;
+var pageHeight=document.documentElement.scrollHeight;
+var viewport={width:window.innerWidth,height:window.innerHeight};
+function isCapped(){if(recStopped)return true;if(Date.now()-startTime>=MAX_RECORDING_MS){recStopped=true;return true;}return false;}
+function persist(){try{var d=JSON.stringify({r:rrwebEvents,i:interactions,c:cursorPath,m:meta,st:startTime});sessionStorage.setItem(SK,d);}catch(ex){rrwebEvents=rrwebEvents.slice(Math.floor(rrwebEvents.length/2));try{sessionStorage.setItem(SK,JSON.stringify({r:rrwebEvents,i:interactions,c:cursorPath,m:meta,st:startTime}));}catch(ex2){}}}
+setInterval(persist,5000);
+window.addEventListener("resize",function(){viewport={width:window.innerWidth,height:window.innerHeight};pageHeight=document.documentElement.scrollHeight;});
+document.addEventListener("click",function(e){if(isCapped()||interactions.length>=MAX_INTERACTIONS)return;var el=e.target;var tag=el.tagName?el.tagName.toLowerCase():"";var text=(el.textContent||"").trim().substring(0,80);var classes=el.className&&typeof el.className==="string"?el.className.substring(0,120):"";interactions.push({type:"click",t:Date.now()-startTime,x:Math.round(e.clientX),y:Math.round(e.clientY),element:{tag:tag,text:text,classes:classes}});},true);
+window.addEventListener("scroll",function(){if(isCapped()||interactions.length>=MAX_INTERACTIONS)return;var now=Date.now();if(now-lastScrollSample<200)return;lastScrollSample=now;var scrollY=Math.round(window.scrollY||window.pageYOffset||0);var depthPct=pageHeight>viewport.height?Math.min(100,Math.round(((scrollY+viewport.height)/pageHeight)*100)):100;interactions.push({type:"scroll",t:now-startTime,y:scrollY,depth_pct:depthPct});},{passive:true});
+document.addEventListener("mousemove",function(e){if(isCapped()||cursorPath.length>=MAX_CURSOR_POINTS)return;var now=Date.now();if(now-lastCursorSample<250)return;lastCursorSample=now;cursorPath.push([Math.round(e.clientX),Math.round(e.clientY),now-startTime]);},{passive:true});
+document.addEventListener("keydown",function(e){if(isCapped()||interactions.length>=MAX_INTERACTIONS)return;if(e.target&&(e.target.tagName==="INPUT"||e.target.tagName==="TEXTAREA"))return;interactions.push({type:"keydown",t:Date.now()-startTime,key:e.key});},true);
+function buildAnalytics(){if(!meta)return null;var ph=document.documentElement.scrollHeight;var maxScroll=0,clickElements={},firstClick=null,firstScroll=null,totalDistance=0;for(var i=0;i<interactions.length;i++){var ev=interactions[i];if(ev.type==="scroll"){if(ev.depth_pct>maxScroll)maxScroll=ev.depth_pct;if(!firstScroll)firstScroll=ev.t;}if(ev.type==="click"){if(!firstClick)firstClick=ev.t;var key=ev.element.tag+":"+ev.element.text.substring(0,30);clickElements[key]=true;}}for(var j=1;j<cursorPath.length;j++){var dx=cursorPath[j][0]-cursorPath[j-1][0];var dy=cursorPath[j][1]-cursorPath[j-1][1];totalDistance+=Math.sqrt(dx*dx+dy*dy);}var duration=Date.now()-startTime;var clickHeatmap=[];for(var k=0;k<interactions.length;k++){if(interactions[k].type==="click")clickHeatmap.push([interactions[k].x,interactions[k].y]);}return{generation_id:meta.generationId,tournament_id:meta.tournamentId,started_at:new Date(startTime).toISOString(),ended_at:new Date().toISOString(),duration_ms:duration,viewport:viewport,page_height:ph,interactions:interactions,cursor_path:cursorPath,click_heatmap:clickHeatmap,summary:{total_clicks:clickHeatmap.length,total_scrolls:interactions.filter(function(e){return e.type==="scroll";}).length,max_scroll_depth_pct:maxScroll,unique_elements_clicked:Object.keys(clickElements).length,time_to_first_click_ms:firstClick,time_to_first_scroll_ms:firstScroll,cursor_distance_px:Math.round(totalDistance),active_time_ms:duration}};}
+function loadRrweb(){if(rrwebStarted)return;rrwebStarted=true;var s=document.createElement("script");s.src=RRWEB_CDN;s.onload=function(){var rec=(window.rrweb&&window.rrweb.record)||window.rrwebRecord;if(!rec)return;rec({emit:function(event){if(rrwebEvents.length>=MAX_RRWEB_EVENTS||isCapped())return;rrwebEvents.push(event);}});};s.onerror=function(){};document.head.appendChild(s);}
+window.addEventListener("message",function(e){if(!e.data||typeof e.data.type!=="string")return;if(e.data.type==="arena:init"){if(!meta)startTime=Date.now();meta={generationId:e.data.generationId||e.data.modelId,tournamentId:e.data.tournamentId};persist();loadRrweb();if(e.source)e.source.postMessage({type:"arena:init-ack",generationId:meta.generationId},"*");}if(e.data.type==="arena:flush"){var resp={type:"arena:recording-data",generationId:meta?meta.generationId:null,rrwebEvents:rrwebEvents,analytics:buildAnalytics()};try{sessionStorage.removeItem(SK);}catch(ex){}if(e.source)e.source.postMessage(resp,"*");}});
+loadRrweb();
+})();</script>
+  <script data-arena-views="true">(function(){var isTop=false;try{isTop=window.self===window.top;}catch(e){}if(!isTop)return;window.__ARENA_META={generationId:"glm-5.2",tournamentId:"5855d89d-c713-4960-b2a2-90205952fef5"};var payload={tournamentId:"5855d89d-c713-4960-b2a2-90205952fef5",modelId:"glm-5.2"};try{var r=document.referrer;if(r){var u=new URL(r);payload.referrerDomain=u.hostname;}}catch(e){}try{var vid=null;try{vid=localStorage.getItem('arena_vid');}catch(e){}if(!vid){vid=typeof crypto!=="undefined"&&crypto.randomUUID?crypto.randomUUID():(Date.now().toString(36)+Math.random().toString(36).slice(2)).slice(0,32);try{localStorage.setItem('arena_vid',vid);}catch(e){}}if(vid)payload.viewerId=vid;}catch(e){}try{fetch("https://www.designarena.ai/api/agon/page-views",{"method":"POST","headers":{"Content-Type":"application/json"},"body":JSON.stringify(payload),"keepalive":true});}catch(e){}})();</script>
+</head>
+  <body>
+    <!-- ===== PRELOADER ===== -->
+    <div id="preloader" class="preloader">
+      <div class="preloader-core">
+        <div class="preloader-ring"></div>
+        <div class="preloader-ring preloader-ring-2"></div>
+        <div class="preloader-logo">PF</div>
+      </div>
+      <p class="preloader-text">PowerFit AI</p>
+    </div>
+
+    <!-- ===== ANIMATED BACKGROUND ===== -->
+    <canvas id="bg-particles" class="bg-particles"></canvas>
+    <div class="bg-gradient-orb bg-orb-1"></div>
+    <div class="bg-gradient-orb bg-orb-2"></div>
+    <div class="bg-gradient-orb bg-orb-3"></div>
+
+    <!-- ===== NAVBAR ===== -->
+    <header id="navbar" class="navbar">
+      <a href="#hero" class="nav-logo">
+        <span class="nav-logo-mark">PF</span>
+        <span class="nav-logo-text">PowerFit<span class="accent">AI</span></span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#trainers">Trainers</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#pricing" class="btn btn-primary nav-cta">Join Now</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section id="hero" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="eyebrow reveal" data-reveal="up">
+            <span class="eyebrow-dot"></span> AI Powered Fitness Platform
+          </span>
+          <h1 class="hero-title reveal" data-reveal="up" data-delay="100">
+            Transform Your Body With <span class="gradient-text">AI Powered</span> Fitness
+          </h1>
+          <p class="hero-sub reveal" data-reveal="up" data-delay="200">
+            Experience the future of training. PowerFit AI blends world-class coaches,
+            cutting-edge equipment, and an intelligent AI assistant that builds a plan
+            shaped entirely around you — your goals, your body, your pace.
+          </p>
+          <div class="hero-actions reveal" data-reveal="up" data-delay="300">
+            <a href="#pricing" class="btn btn-primary btn-glow">Join Now</a>
+            <button class="btn btn-ghost" id="heroFitBotBtn">Talk To FitBot AI</button>
+          </div>
+          <div class="hero-stats reveal" data-reveal="up" data-delay="400">
+            <div class="stat"><span class="stat-num" data-count="12000">0</span><span class="stat-label">Active Members</span></div>
+            <div class="stat"><span class="stat-num" data-count="48">0</span><span class="stat-label">Expert Trainers</span></div>
+            <div class="stat"><span class="stat-num" data-count="98">0</span><span class="stat-label">% Goal Success</span></div>
+          </div>
+        </div>
+        <div class="hero-visual reveal" data-reveal="right">
+          <div class="hero-img-wrap">
+            <img src="/images/hero.jpg" alt="Athlete training in a dark neon-lit gym" loading="eager" />
+            <div class="hero-img-glow"></div>
+          </div>
+          <div class="hero-badge glass">
+            <div class="hero-badge-icon">⚡</div>
+            <div>
+              <strong>FitBot AI</strong>
+              <span>Personalized plans in seconds</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="#about" class="scroll-cue" aria-label="Scroll down">
+        <span class="mouse"><span class="wheel"></span></span>
+      </a>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-head reveal" data-reveal="up">
+          <span class="section-tag">About PowerFit AI</span>
+          <h2 class="section-title">Where Human Expertise Meets <span class="gradient-text">Artificial Intelligence</span></h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-visual reveal" data-reveal="left">
+            <img src="/images/about.jpg" alt="Modern gym interior with equipment" />
+            <div class="about-visual-glow"></div>
+          </div>
+          <div class="about-content">
+            <p class="about-lead reveal" data-reveal="right">
+              We are not just a gym. We are an intelligent fitness ecosystem designed to
+              make every rep count and every session smarter than the last.
+            </p>
+            <div class="about-features">
+              <div class="about-feature reveal" data-reveal="right" data-delay="80">
+                <div class="about-feature-icon">🏆</div>
+                <div>
+                  <h3>Professional Trainers</h3>
+                  <p>Certified coaches with decades of combined experience guiding every step of your journey.</p>
+                </div>
+              </div>
+              <div class="about-feature reveal" data-reveal="right" data-delay="160">
+                <div class="about-feature-icon">🤖</div>
+                <div>
+                  <h3>AI-Powered Support</h3>
+                  <p>FitBot AI analyzes your progress and adapts your plan in real time, 24/7.</p>
+                </div>
+              </div>
+              <div class="about-feature reveal" data-reveal="right" data-delay="240">
+                <div class="about-feature-icon">⚙️</div>
+                <div>
+                  <h3>Modern Equipment</h3>
+                  <p>State-of-the-art machines and smart tracking integrated with your AI dashboard.</p>
+                </div>
+              </div>
+              <div class="about-feature reveal" data-reveal="right" data-delay="320">
+                <div class="about-feature-icon">🎯</div>
+                <div>
+                  <h3>Personalized Plans</h3>
+                  <p>Every program is tailored to your body, goals, schedule, and recovery needs.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-head reveal" data-reveal="up">
+          <span class="section-tag">Our Services</span>
+          <h2 class="section-title">Everything You Need To <span class="gradient-text">Succeed</span></h2>
+        </div>
+        <div class="services-grid">
+          <article class="service-card glass reveal" data-reveal="up" data-delay="0">
+            <div class="service-icon">💪</div>
+            <h3>Strength Training</h3>
+            <p>Build raw power with progressive overload programs and free-weight zones engineered for results.</p>
+            <span class="service-link">Explore →</span>
+          </article>
+          <article class="service-card glass reveal" data-reveal="up" data-delay="80">
+            <div class="service-icon">🏃</div>
+            <h3>Cardio Zone</h3>
+            <p>Premium treadmills, rowers, and bikes with heart-rate sync to your AI performance tracker.</p>
+            <span class="service-link">Explore →</span>
+          </article>
+          <article class="service-card glass reveal" data-reveal="up" data-delay="160">
+            <div class="service-icon">🧑‍🏫</div>
+            <h3>Personal Coaching</h3>
+            <p>One-on-one sessions with elite trainers who craft and refine your strategy week by week.</p>
+            <span class="service-link">Explore →</span>
+          </article>
+          <article class="service-card glass reveal" data-reveal="up" data-delay="240">
+            <div class="service-icon">🥗</div>
+            <h3>Diet Consultation</h3>
+            <p>AI-assisted nutrition plans built around your metabolism, preferences, and fitness targets.</p>
+            <span class="service-link">Explore →</span>
+          </article>
+          <article class="service-card glass service-card-featured reveal" data-reveal="up" data-delay="320">
+            <div class="service-icon">🤖</div>
+            <h3>AI Fitness Assistant</h3>
+            <p>Chat with FitBot AI anytime for instant guidance, form tips, plan tweaks, and motivation.</p>
+            <span class="service-link">Explore →</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PRICING ===== -->
+    <section id="pricing" class="section">
+      <div class="container">
+        <div class="section-head reveal" data-reveal="up">
+          <span class="section-tag">Membership</span>
+          <h2 class="section-title">Choose Your <span class="gradient-text">Power Plan</span></h2>
+          <p class="section-sub">Transparent pricing. No hidden fees. Cancel anytime.</p>
+        </div>
+        <div class="pricing-grid">
+          <article class="price-card glass reveal" data-reveal="up" data-delay="0">
+            <h3 class="price-name">Basic</h3>
+            <div class="price-value"><span class="currency">₹</span>1500<span class="price-period">/month</span></div>
+            <ul class="price-features">
+              <li>Full gym access</li>
+              <li>2 group classes / week</li>
+              <li>FitBot AI (basic)</li>
+              <li>Progress tracking</li>
+            </ul>
+            <a href="#contact" class="btn btn-ghost btn-block">Get Started</a>
+          </article>
+
+          <article class="price-card glass price-card-featured reveal" data-reveal="up" data-delay="120">
+            <span class="price-badge">★ Recommended</span>
+            <h3 class="price-name">Premium</h3>
+            <div class="price-value"><span class="currency">₹</span>4000<span class="price-period">/3 months</span></div>
+            <ul class="price-features">
+              <li>Everything in Basic</li>
+              <li>Unlimited group classes</li>
+              <li>FitBot AI (full)</li>
+              <li>1 personal session / week</li>
+              <li>Diet consultation</li>
+            </ul>
+            <a href="#contact" class="btn btn-primary btn-glow btn-block">Choose Premium</a>
+          </article>
+
+          <article class="price-card glass reveal" data-reveal="up" data-delay="240">
+            <h3 class="price-name">Elite</h3>
+            <div class="price-value"><span class="currency">₹</span>14000<span class="price-period">/year</span></div>
+            <ul class="price-features">
+              <li>Everything in Premium</li>
+              <li>Unlimited personal coaching</li>
+              <li>Priority FitBot AI</li>
+              <li>Recovery & spa access</li>
+              <li>Dedicated AI nutritionist</li>
+            </ul>
+            <a href="#contact" class="btn btn-ghost btn-block">Go Elite</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TRAINERS ===== -->
+    <section id="trainers" class="section">
+      <div class="container">
+        <div class="section-head reveal" data-reveal="up">
+          <span class="section-tag">Meet The Team</span>
+          <h2 class="section-title">Elite Coaches, <span class="gradient-text">Real Results</span></h2>
+        </div>
+        <div class="trainers-grid">
+          <article class="trainer-card tilt reveal" data-reveal="up" data-delay="0">
+            <div class="trainer-img"><img src="/images/trainer1.jpg" alt="Trainer Arjun Mehta" /></div>
+            <div class="trainer-info">
+              <h3>Arjun Mehta</h3>
+              <span class="trainer-spec">Strength &amp; Hypertrophy</span>
+              <p class="trainer-exp">12+ years experience</p>
+            </div>
+          </article>
+          <article class="trainer-card tilt reveal" data-reveal="up" data-delay="100">
+            <div class="trainer-img"><img src="/images/trainer2.jpg" alt="Trainer Sara Khan" /></div>
+            <div class="trainer-info">
+              <h3>Sara Khan</h3>
+              <span class="trainer-spec">HIIT &amp; Functional</span>
+              <p class="trainer-exp">9+ years experience</p>
+            </div>
+          </article>
+          <article class="trainer-card tilt reveal" data-reveal="up" data-delay="200">
+            <div class="trainer-img"><img src="/images/trainer3.jpg" alt="Trainer Rohan Verma" /></div>
+            <div class="trainer-info">
+              <h3>Rohan Verma</h3>
+              <span class="trainer-spec">Powerlifting</span>
+              <p class="trainer-exp">15+ years experience</p>
+            </div>
+          </article>
+          <article class="trainer-card tilt reveal" data-reveal="up" data-delay="300">
+            <div class="trainer-img"><img src="/images/trainer4.jpg" alt="Trainer Ananya Rao" /></div>
+            <div class="trainer-info">
+              <h3>Ananya Rao</h3>
+              <span class="trainer-spec">Mobility &amp; Yoga</span>
+              <p class="trainer-exp">8+ years experience</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section id="testimonials" class="section">
+      <div class="container">
+        <div class="section-head reveal" data-reveal="up">
+          <span class="section-tag">Success Stories</span>
+          <h2 class="section-title">Loved By <span class="gradient-text">Thousands</span></h2>
+        </div>
+        <div class="testimonial-carousel reveal" data-reveal="up">
+          <div class="testimonial-track" id="testimonialTrack">
+            <!-- slides injected by script.js -->
+          </div>
+          <button class="carousel-btn carousel-prev" id="prevBtn" aria-label="Previous">‹</button>
+          <button class="carousel-btn carousel-next" id="nextBtn" aria-label="Next">›</button>
+          <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-head reveal" data-reveal="up">
+          <span class="section-tag">Get In Touch</span>
+          <h2 class="section-title">Start Your <span class="gradient-text">Transformation</span></h2>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-info reveal" data-reveal="left">
+            <div class="contact-item glass">
+              <div class="contact-icon">📍</div>
+              <div><h4>Location</h4><p>42 Cyber Towers, Tech Park Road, Bengaluru 560001</p></div>
+            </div>
+            <div class="contact-item glass">
+              <div class="contact-icon">📞</div>
+              <div><h4>Phone</h4><p>+91 98765 43210</p></div>
+            </div>
+            <div class="contact-item glass">
+              <div class="contact-icon">🕒</div>
+              <div><h4>Opening Hours</h4><p>Mon–Sat: 5:00 AM – 11:00 PM<br />Sun: 7:00 AM – 9:00 PM</p></div>
+            </div>
+            <div class="contact-item glass">
+              <div class="contact-icon">✉️</div>
+              <div><h4>Email</h4><p>hello@powerfit.ai</p></div>
+            </div>
+          </div>
+          <form class="contact-form glass reveal" id="contactForm" data-reveal="right">
+            <div class="form-row">
+              <div class="form-field">
+                <input type="text" id="cf-name" required />
+                <label for="cf-name">Your Name</label>
+              </div>
+              <div class="form-field">
+                <input type="email" id="cf-email" required />
+                <label for="cf-email">Email Address</label>
+              </div>
+            </div>
+            <div class="form-field">
+              <input type="text" id="cf-subject" required />
+              <label for="cf-subject">Subject</label>
+            </div>
+            <div class="form-field">
+              <textarea id="cf-message" rows="5" required></textarea>
+              <label for="cf-message">Your Message</label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-glow btn-block">Send Message</button>
+            <p class="form-status" id="formStatus"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <a href="#hero" class="nav-logo">
+            <span class="nav-logo-mark">PF</span>
+            <span class="nav-logo-text">PowerFit<span class="accent">AI</span></span>
+          </a>
+          <p>The future of fitness — where AI meets human performance. Train smarter, recover faster, transform completely.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="Twitter">X</a>
+            <a href="#" aria-label="YouTube">YT</a>
+            <a href="#" aria-label="Facebook">FB</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#trainers">Trainers</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="#contact">Contact</a>
+          <a href="#">FAQ</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms</a>
+        </div>
+        <div class="footer-col">
+          <h4>Newsletter</h4>
+          <p>AI fitness tips, straight to your inbox.</p>
+          <form class="footer-newsletter" id="newsletterForm">
+            <input type="email" placeholder="Your email" required />
+            <button type="submit">→</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span id="year"></span> PowerFit AI. All rights reserved. Built for the future of fitness.</p>
+      </div>
+    </footer>
+
+    <!-- ===== FLOATING AI CHATBOT ===== -->
+    <button id="chatbotToggle" class="chatbot-toggle" aria-label="Open FitBot AI chat">
+      <span class="chatbot-icon">🤖</span>
+      <span class="chatbot-pulse"></span>
+      <span class="chatbot-pulse chatbot-pulse-2"></span>
+    </button>
+
+    <div id="chatbotWindow" class="chatbot-window glass" aria-hidden="true">
+      <div class="chatbot-header">
+        <div class="chatbot-header-info">
+          <div class="chatbot-avatar">🤖</div>
+          <div>
+            <strong>FitBot AI</strong>
+            <span class="chatbot-status"><span class="status-dot"></span> Online</span>
+          </div>
+        </div>
+        <button class="chatbot-close" id="chatbotClose" aria-label="Close chat">✕</button>
+      </div>
+      <div class="chatbot-body" id="chatbotBody">
+        <!-- messages injected by script.js -->
+      </div>
+      <form class="chatbot-input" id="chatbotForm">
+        <input type="text" id="chatbotInput" placeholder="Ask FitBot anything..." autocomplete="off" />
+        <button type="submit" class="chatbot-send" aria-label="Send">➤</button>
+      </form>
+    </div>
+
+    <script src="/script.js"></script>
+  </body>
+</html>
