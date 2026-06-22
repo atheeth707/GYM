@@ -74,7 +74,8 @@ Ask:
 
 
     const data = await response.json();
-
+console.log("Gemini status:", response.status);
+console.log("Gemini response:", JSON.stringify(data));
 
     const text =
       data?.candidates?.[0]
